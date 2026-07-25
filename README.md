@@ -1,4 +1,24 @@
-# AI测试工程师成长项目
+# 项目介绍
+
+## 简介：
+
+一个面向AI应用测试与评测的企业级测试平台。
+
+支持：
+
+DeepEval
+
+Opencompass
+
+LangSmith
+
+RAG Evaluation
+
+Benchmark
+
+CI/CD
+
+Allure
 
 ## 1.这个项目解决什么问题？
 
