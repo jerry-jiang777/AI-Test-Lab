@@ -1,63 +1,55 @@
-# 项目介绍
+## 1. 项目名称
 
-## 简介：
+AI-Test-Lab
+
+## 2. 项目简介
 
 一个面向AI应用测试与评测的企业级测试平台。
 
-支持：
+## 3. 核心能力
 
-DeepEval
+- 使用 DeepEval 评测 LLM 应用的回答质量
+- 使用 OpenCompass 评测基础模型的通用能力
+- 使用 Ragas 评测 RAG 应用
+- 使用 LangSmith 追踪和分析 LLM 调用链
+- 管理 Benchmark 与测试数据集
+- 生成 Allure、JSON 和 HTML 评测报告
+- 通过 GitHub Actions 执行自动化回归评测
 
-Opencompass
+## 4. 架构图
 
-LangSmith
+    CLI / API
+                             │
+                             ▼
+                    Evaluation Engine
+                             │
+          ┌──────────────────┐
+          │                          │
+   	  ▼                           ▼                                     ▼
+      DeepEval              OpenCompass                   Ragas
+          │                  │                     │
+          └──────────────────|
+                                          ▼
+                                     LLM Adapter
 
-RAG Evaluation
+    ┌──────────────────┼
+          ▼                  ▼                  ▼
+        OpenAI           DeepSeek             Qwen
 
-Benchmark
+Benchmark / Dataset ──► Evaluation Task ──► Reports未来会迭代哪些能力？
 
-CI/CD
+## 5. 项目目录
 
-Allure
 
-## 项目架构
 
-CLI/API
+## 6. 快速开始
 
-↓
+建设中
 
-Evaluation Engine
+## 7. Roadmap
 
-↓
+# 8. 项目背景
 
-DeepEval
-
-↓
-
-Opencompass
-
-↓
-
-LLM
-
-↓
-
-Dataset
-
-## 1.这个项目解决什么问题？
-
-之前存在学习颗粒度过大，零散化严重，知识没有连续性，学了很多但是没有作品，即缺少一个主项目，所有的知识都应该围绕一个项目开展的。最大的问题就是 "没有输出"。
-
-## 2.为什么要做它？
-
-解决上述存在的问题、所以开始这个项目的目的就是：不再以“学知识”为目标，而是以“完成项目”为目标。
-
-## 3.它有哪些核心功能？
-
-### 3.1使用DeepEval评测AI应用效果
-
-### 3.2 使用OpenCompass为评测模型通用能力
-
-## 4.未来会迭代哪些能力？
-
-### 4.1 企业CI/CD
+本项目用于将零散的 AI 测试知识沉淀为可运行、可测试、
+可持续集成的工程化项目，并逐步形成完整的 LLM 应用与
+基础模型评测能力。

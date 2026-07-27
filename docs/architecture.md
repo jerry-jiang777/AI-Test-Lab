@@ -4,45 +4,73 @@
 
 致力于构建一个"系统架构合理"的，高内聚低耦合的，面向LLM应用测试与基础模型评测的企业级自动化测试平台。
 
-总体架构：
+### 总体架构：
 
-用户
-
-↓
-
-CLI
+接口层
 
 ↓
 
-评测器
+任务编排层
 
 ↓
 
-Model Layer
+评测引擎层
 
 ↓
 
-测试数据集
+模型适配层
 
 ↓
 
-Report
+数据层
+
+↓
+
+可观测性层
+
+↓
+
+报告层
+
+### 各个层级的职责
+
+#### 1. 接口层：Interface Layer
+
+负责接手用户请求，未来支持 CLI、REST API 和 Web 页面。
+
+#### 2. 任务编排层 Task Layer
+
+负责创建评测任务、读取配置、选择数据集、控制执行流程。
+
+#### 3. 评测引擎层 Evaluation Layer
+
+提供统一评测入口，根据任务类型调用 DeepEval、OpenCompass、或 Ragas
+
+#### 4. 模型适配层 LLM Adapter Layer
+
+屏蔽 OpenAI、DeepSeek、Qwen、Ollama等不同接口差异，对上一层提供统一的generate( ) 或 invoke( )方法。
+
+#### 5. 数据层 Data Layer
+
+负责管理Benchmark、Dataset、Promopt 和期望结果。
+
+#### 6. 可观测性层 Observability Layer
+
+使用日志和 LangSmith 记录调用链、耗时、输入、输出和异常。
+
+#### 7. 报告层 Report Layer
+
+统一输出JSON、HTML、和Allure 报告。
 
 
-### 为什么要分层？
+### 未来拓展方向
 
-方便项目后期拓展和修改代码，不会出现"牵一发而动全身"的现象，在系统设计层面更加符合"高内聚低耦合"的原则。
-
-### 每一层负责做什么的?
-
-#### 评估器层
-
-统一管理评测规则，不同业务有不同业务的评价规则。根据不同测试场景选择不同的评测器执行测试。
-
-#### Model Layer
-
-负责不同模型的调用，因为评测的时候会选择不同的模型，或则评测不同的Model，该层做统一的封装处理，即使更换了model的调用也不会修改很多的代码。
-
-### Report层
-
-统一管理不同评测的测试报告
+- 支持更多 LLM Provider
+- 支持 Prompt A/B 测试
+- 支持 RAG 检索与生成质量评测
+- 支持自定义评测指标
+- 支持批量 Benchmark 回归
+- 支持 GitHub Actions 自动执行
+- 支持 Allure 和 HTML 可视化报告
+- 支持 FastAPI 和 Web 管理页面
+- 支持 Docker 容器化部署
