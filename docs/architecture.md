@@ -52,7 +52,7 @@
 
 #### 5. 数据层 Data Layer
 
-负责管理Benchmark、Dataset、Promopt 和期望结果。
+负责管理Benchmark、Dataset、Prompt 和期望结果。
 
 #### 6. 可观测性层 Observability Layer
 
@@ -61,7 +61,6 @@
 #### 7. 报告层 Report Layer
 
 统一输出JSON、HTML、和Allure 报告。
-
 
 ### 未来拓展方向
 
