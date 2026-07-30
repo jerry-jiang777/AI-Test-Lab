@@ -36,7 +36,7 @@
 
 #### 1. 接口层：Interface Layer
 
-负责接手用户请求，未来支持 CLI、REST API 和 Web 页面。
+负责接收用户请求，未来支持 CLI、REST API 和 Web 页面。
 
 #### 2. 任务编排层 Task Layer
 
