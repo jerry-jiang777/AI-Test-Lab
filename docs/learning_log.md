@@ -33,3 +33,36 @@
 ## Day 3
 
 ### 3.1 今天我完成了什么？
+
+- 定义了统一的 LLMRequest 和 LLMResponse
+- 创建了 BaseLLM 抽象基类
+- 创建了MockLLM测试实现
+- 编写了 LLM Adapter 单元测试
+
+### 3.2 今天学到了什么？
+
+- 为什么评测引擎不应该直接依赖某个模型 SDK
+- 什么是抽象基类和抽象方法
+- 什么是 Adapter
+- 什么是 Mock  和测试替身
+- raise 和pytest.raise 的运行逻辑
+
+### 3.3 遇到的问题？
+
+导包错误，没有把项目根目录的路径加入到python的搜索路径中导致运行脚本的时候路径报错
+
+### 3.4 我的理解
+
+为什么增加一个新的模型 Provider 时，不应该修改 Evaluation Engine？
+
+原则：就是评测逻辑跟模型解耦，评测的代码不应该跟模型提供商强制绑定，如果强制绑定一旦更换模型，Evaluation Engine中的代码会涉及到大量改动。
+
+### 3.5 当前测试结果
+
+Provider: mock
+Model: mock-model
+Content: Mock 模型已收到问题：DeepEval 和 OpenCompass 有什么区别？
+
+### 3.6 今日最重要的问题：为什么Evaluation Engine应该依赖BaseLLM，而不是依赖"OpenAICompatibleLLM"
+
+不同的模型供应商请求和响应格式不同，如果挨个适配不现实(繁琐)，用BaseLLM制定了统一的请求协议便于管理。使应用层不用考虑底层如何实现的。
