@@ -14,11 +14,6 @@ class BaseLLM(ABC):
         self.provider = provider
 
 
-    @property
-    def provider(self) -> str:
-        return self.provider
-
-
     @abstractmethod
     def generate(self, request: LLMRequest) -> LLMResponse:
         """根据请求生成模型响应。"""
